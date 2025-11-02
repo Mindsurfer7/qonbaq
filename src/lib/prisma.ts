@@ -18,6 +18,11 @@ const resolvedDbUrl = dbUrl.startsWith('file:') && !path.isAbsolute(dbUrl.slice(
   ? `file:${path.join(rootDir, dbUrl.slice(5))}`
   : dbUrl;
 
+// Логируем путь к БД для отладки (только в development)
+if (process.env.NODE_ENV === 'development') {
+  console.log('[Prisma] Database URL:', resolvedDbUrl);
+}
+
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({

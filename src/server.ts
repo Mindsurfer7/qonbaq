@@ -12,16 +12,17 @@ export const buildServer = async () => {
   // Настройка CORS
   await app.register(cors, {
     origin: (origin, cb) => {
-      // В разработке разрешаем все источники, в продакшене можно указать конкретные домены
-      const allowedOrigins = process.env.CORS_ORIGIN 
-        ? process.env.CORS_ORIGIN.split(',')
-        : ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'http://127.0.0.1:3000', 'http://127.0.0.1:5173'];
-      
-      // Если origin не указан (например, запросы из Postman), разрешаем
-      if (!origin || allowedOrigins.includes(origin)) {
-        cb(null, true);
+      // В продакшене проверяем конкретные домены, в разработке разрешаем все
+      if (process.env.NODE_ENV === 'production' && process.env.CORS_ORIGIN) {
+        const allowedOrigins = process.env.CORS_ORIGIN.split(',');
+        if (!origin || allowedOrigins.includes(origin)) {
+          cb(null, true);
+        } else {
+          cb(null, false);
+        }
       } else {
-        cb(null, false);
+        // В разработке разрешаем все источники (включая Flutter emulator/device)
+        cb(null, true);
       }
     },
     credentials: true,
