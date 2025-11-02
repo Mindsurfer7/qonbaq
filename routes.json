@@ -1,0 +1,435 @@
+{
+    "app": {
+      "name": "QonbaQ Business Application",
+      "version": "1.0",
+      "principle": "One action - One record - One report!",
+      "main_entry_point": "/start_page",
+      "routes": [
+        {
+          "route_id": "start_page",
+          "name": "Start Page",
+          "path": "/",
+          "description": "Main start page of the application",
+          "components": [
+            {
+              "id": "login_section",
+              "name": "Login/Registration",
+              "type": "auth_module",
+              "navigation_to": {
+                "route": "/business_main",
+                "description": "After authorization, navigate to Business Main"
+              }
+            },
+            {
+              "id": "application_stages",
+              "name": "Application Development Stages",
+              "stages": [
+                {
+                  "stage": 1,
+                  "name": "Business Application",
+                  "progress": 0.8
+                },
+                {
+                  "stage": 2,
+                  "name": "Family Application",
+                  "progress": 0.1
+                },
+                {
+                  "stage": 3,
+                  "name": "Interaction with public organizations",
+                  "progress": 0.1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "route_id": "business_main",
+          "name": "Business Main (Base Level)",
+          "path": "/business",
+          "description": "Main interface for business user",
+          "level": 0,
+          "common_navigation": [
+            {
+              "name": "Start Work Day",
+              "path": "/start_work_day"
+            },
+            {
+              "name": "Chats and Email",
+              "path": "/chats_email"
+            },
+            {
+              "name": "Calendar Events",
+              "path": "/calendar"
+            },
+            {
+              "name": "My Profile/Settings",
+              "path": "/profile_settings"
+            }
+          ],
+          "blocks": [
+            {
+              "block_id": "operational_block",
+              "block_name": "Operational Block (Level 1)",
+              "path": "/business/operational",
+              "level": 1,
+              "items": [
+                {
+                  "item_id": "crm",
+                  "name": "CRM (Level 2)",
+                  "path": "/business/operational/crm",
+                  "level": 2,
+                  "sub_items": [
+                    {
+                      "sub_id": "sales_funnel",
+                      "name": "Sales Funnel (Level 2)",
+                      "path": "/business/operational/crm/sales_funnel"
+                    },
+                    {
+                      "sub_id": "clients_list",
+                      "name": "Clients List (Level 2)",
+                      "path": "/business/operational/crm/clients_list",
+                      "nested": [
+                        {
+                          "nested_id": "client_card",
+                          "name": "Client Card for CRM (Level 3)",
+                          "path": "/business/operational/crm/clients_list/client_card",
+                          "level": 3,
+                          "further_nesting": [
+                            {
+                              "deep_id": "client_requisites",
+                              "name": "Client Requisites (Company) for CRM (Level 4)",
+                              "path": "/business/operational/crm/clients_list/client_card/client_requisites",
+                              "level": 4
+                            },
+                            {
+                              "deep_id": "client_deal",
+                              "name": "Deal Card by Client (Level 4)",
+                              "path": "/business/operational/crm/clients_list/client_card/client_deal",
+                              "level": 4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "sub_id": "tasks_crm",
+                      "name": "Tasks by Clients CRM (Level 2)",
+                      "path": "/business/operational/crm/tasks_crm"
+                    }
+                  ]
+                },
+                {
+                  "item_id": "tasks",
+                  "name": "Tasks (Level 2)",
+                  "path": "/business/operational/tasks",
+                  "level": 2,
+                  "nested": [
+                    {
+                      "nested_id": "task_card",
+                      "name": "Task Card (Level 3)",
+                      "path": "/business/operational/tasks/task_card",
+                      "level": 3,
+                      "further_nesting": [
+                        {
+                          "deep_id": "control_points",
+                          "name": "Control Points (TP) window (Level 4)",
+                          "path": "/business/operational/tasks/task_card/control_points",
+                          "level": 4
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "item_id": "business_processes",
+                  "name": "Business Processes (Level 2)",
+                  "path": "/business/operational/business_processes",
+                  "level": 2
+                },
+                {
+                  "item_id": "construction",
+                  "name": "Construction (Level 2)",
+                  "path": "/business/operational/construction",
+                  "level": 2,
+                  "nested": [
+                    {
+                      "nested_id": "production",
+                      "name": "Production (Level 3)",
+                      "path": "/business/operational/construction/production",
+                      "level": 3
+                    },
+                    {
+                      "nested_id": "material_resources",
+                      "name": "Material Resources (Level 3)",
+                      "path": "/business/operational/construction/material_resources",
+                      "level": 3
+                    },
+                    {
+                      "nested_id": "human_resources",
+                      "name": "Human Resources (Level 3)",
+                      "path": "/business/operational/construction/human_resources",
+                      "level": 3
+                    }
+                  ]
+                },
+                {
+                  "item_id": "monitor_panel",
+                  "name": "Monitor Panel and Admin",
+                  "path": "/business/operational/monitor_panel",
+                  "level": 2
+                }
+              ],
+              "common_sections": [
+                {
+                  "section_name": "Start Work Day",
+                  "path": "/business/operational/start_work_day"
+                },
+                {
+                  "section_name": "Chats and Email",
+                  "path": "/business/operational/chats_email"
+                },
+                {
+                  "section_name": "Calendar Events",
+                  "path": "/business/operational/calendar"
+                },
+                {
+                  "section_name": "My Profile/Settings",
+                  "path": "/business/operational/profile_settings"
+                }
+              ],
+              "sidebar_sections": [
+                {
+                  "section_name": "Tasks",
+                  "path": "/business/operational/tasks"
+                },
+                {
+                  "section_name": "Approvals",
+                  "path": "/business/operational/approvals"
+                },
+                {
+                  "section_name": "Remember to Do",
+                  "path": "/business/operational/remember"
+                },
+                {
+                  "section_name": "Favorites",
+                  "path": "/business/operational/favorites"
+                }
+              ]
+            },
+            {
+              "block_id": "financial_block",
+              "block_name": "Financial Block (Level 1)",
+              "path": "/business/financial",
+              "level": 1,
+              "items": [
+                {
+                  "item_id": "payment_requests",
+                  "name": "Payment Requests (Level 2)",
+                  "path": "/business/financial/payment_requests",
+                  "level": 2
+                },
+                {
+                  "item_id": "income_expense",
+                  "name": "Income - Expense (Level 2)",
+                  "path": "/business/financial/income_expense",
+                  "level": 2
+                }
+              ],
+              "sidebar_sections": [
+                {
+                  "section_name": "Tasks",
+                  "path": "/business/financial/tasks"
+                },
+                {
+                  "section_name": "Approvals",
+                  "path": "/business/financial/approvals"
+                },
+                {
+                  "section_name": "Remember to Do",
+                  "path": "/business/financial/remember"
+                },
+                {
+                  "section_name": "Favorites",
+                  "path": "/business/financial/favorites"
+                }
+              ]
+            },
+            {
+              "block_id": "admin_block",
+              "block_name": "Administrative and Household Block (Level 1)",
+              "path": "/business/admin",
+              "level": 1,
+              "items": [
+                {
+                  "item_id": "document_management",
+                  "name": "Document Management (Level 2)",
+                  "path": "/business/admin/document_management",
+                  "level": 2,
+                  "nested": [
+                    {
+                      "nested_id": "employee_card",
+                      "name": "Employee Card",
+                      "path": "/business/admin/document_management/employee_card",
+                      "level": 3
+                    }
+                  ]
+                },
+                {
+                  "item_id": "imprest",
+                  "name": "Imprest (Level 2)",
+                  "path": "/business/admin/imprest",
+                  "level": 2,
+                  "nested": [
+                    {
+                      "nested_id": "assets_card",
+                      "name": "Fixed Asset Card (Level 3)",
+                      "path": "/business/admin/imprest/assets_card",
+                      "level": 3
+                    }
+                  ]
+                },
+                {
+                  "item_id": "hr_documents",
+                  "name": "HR Documents (Level 2)",
+                  "path": "/business/admin/hr_documents",
+                  "level": 2
+                },
+                {
+                  "item_id": "staff_schedule",
+                  "name": "Staff Schedule (Level 2)",
+                  "path": "/business/admin/staff_schedule",
+                  "level": 2
+                }
+              ],
+              "sidebar_sections": [
+                {
+                  "section_name": "Tasks",
+                  "path": "/business/admin/tasks"
+                },
+                {
+                  "section_name": "Approvals",
+                  "path": "/business/admin/approvals"
+                },
+                {
+                  "section_name": "Remember to Do",
+                  "path": "/business/admin/remember"
+                },
+                {
+                  "section_name": "Favorites",
+                  "path": "/business/admin/favorites"
+                }
+              ]
+            },
+            {
+              "block_id": "analytics_block",
+              "block_name": "Analytics Block (Level 1)",
+              "path": "/business/analytics",
+              "level": 1,
+              "sidebar_sections": [
+                {
+                  "section_name": "Tasks",
+                  "path": "/business/analytics/tasks"
+                },
+                {
+                  "section_name": "Approvals",
+                  "path": "/business/analytics/approvals"
+                },
+                {
+                  "section_name": "Remember to Do",
+                  "path": "/business/analytics/remember"
+                },
+                {
+                  "section_name": "Favorites",
+                  "path": "/business/analytics/favorites"
+                }
+              ]
+            }
+          ],
+          "main_menu_sections": [
+            {
+              "section_id": "start_work_day",
+              "name": "Start Work Day Section",
+              "path": "/start_work_day"
+            },
+            {
+              "section_id": "chats_email",
+              "name": "Chats and Email Section",
+              "path": "/chats_email"
+            },
+            {
+              "section_id": "calendar",
+              "name": "Calendar Events Section",
+              "path": "/calendar"
+            },
+            {
+              "section_id": "profile",
+              "name": "My Profile/Settings Section",
+              "path": "/profile_settings"
+            },
+            {
+              "section_id": "tasks",
+              "name": "Tasks Section",
+              "path": "/tasks"
+            },
+            {
+              "section_id": "approvals",
+              "name": "Approvals Section",
+              "path": "/approvals"
+            },
+            {
+              "section_id": "remember",
+              "name": "Remember to Do Section",
+              "path": "/remember"
+            },
+            {
+              "section_id": "favorites",
+              "name": "Favorites Section",
+              "path": "/favorites"
+            }
+          ]
+        }
+      ],
+      "navigation_patterns": {
+        "back_navigation": {
+          "description": "Home button is available on all pages of blocks and sections",
+          "returns_to": "/business"
+        },
+        "previous_navigation": {
+          "description": "Back button is available for navigation between subsections",
+          "behavior": "Return to previous hierarchy level"
+        },
+        "sidebar_access": {
+          "description": "Quick access to main sections from sidebar",
+          "sections": [
+            "Tasks",
+            "Approvals",
+            "Remember to Do",
+            "Favorites"
+          ]
+        }
+      },
+      "primary_data_entry_points": {
+        "description": "Primary data entry sections (used in all other sections)",
+        "data_sources": [
+          "Tasks",
+          "Chats",
+          "Email",
+          "Telephony",
+          "Client Card",
+          "Deal by Client",
+          "Tasks by Client",
+          "Fixed Asset Card",
+          "Employee Card",
+          "Staff Schedule",
+          "Arrival and Departure from Work",
+          "Job Instructions",
+          "Instructions for Business Processes",
+          "Nomenclature of Cases",
+          "Calendar of Online and Offline Meetings",
+          "Business Process Requests (Invoice, Cash Request, Travel Request, etc.)",
+          "Money Income and Expense"
+        ]
+      }
+    }
+  }
