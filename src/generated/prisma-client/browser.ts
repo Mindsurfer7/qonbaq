@@ -26,3 +26,23 @@ export type User = Prisma.UserModel
  * 
  */
 export type RefreshToken = Prisma.RefreshTokenModel
+/**
+ * Model Business
+ * 
+ */
+export type Business = Prisma.BusinessModel
+/**
+ * Model Employment
+ * 
+ */
+export type Employment = Prisma.EmploymentModel
+/**
+ * Model Task
+ * 
+ */
+export type Task = Prisma.TaskModel
+/**
+ * Model Document
+ * 
+ */
+export type Document = Prisma.DocumentModel

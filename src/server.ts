@@ -2,6 +2,7 @@ import 'dotenv/config';
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { authRoutes } from './routes/auth';
+import { userRoutes } from './routes/user';
 
 const port = Number(process.env.PORT || 3000);
 const host = process.env.HOST || '0.0.0.0';
@@ -35,6 +36,9 @@ export const buildServer = async () => {
 
   // Регистрация роутов аутентификации
   await app.register(authRoutes, { prefix: '/auth' });
+
+  // Регистрация роутов пользователя
+  await app.register(userRoutes, { prefix: '/api/user' });
 
   return app;
 };
